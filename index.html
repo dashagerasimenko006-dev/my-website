@@ -5,15 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>[Твоє ім'я] — Особистий сайт</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFGEM6TE8G"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-EFGEM6TE8G');
-  </script>
-
   <style>
     :root {
       --bg: #0f1115;
@@ -420,6 +411,46 @@
   <script>
     // Автоматичний рік у футері
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
+    import { getRemoteConfig, fetchAndActivate, getString } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-remote-config.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNIq9qc4x85AZkpLbo6XxiKFopsApJ_Sg",
+      authDomain: "daria-portfolio.firebaseapp.com",
+      projectId: "daria-portfolio",
+      storageBucket: "daria-portfolio.firebasestorage.app",
+      messagingSenderId: "434595551434",
+      appId: "1:434595551434:web:351c06e0677c0e83d0fc33",
+      measurementId: "G-3WZW4G41WG"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    const ctaButton = document.querySelector('.btn-primary');
+
+    // ===== A/B тест: текст головної кнопки =====
+    const remoteConfig = getRemoteConfig(app);
+    // Значення за замовчуванням — показується, поки Firebase не відповів
+    // або якщо він недоступний (напр. заблокований блокувальником реклами).
+    remoteConfig.defaultConfig = { cta_text: "Зв'язатися" };
+    remoteConfig.settings.minimumFetchIntervalMillis = 3600000; // 1 година
+
+    try {
+      await fetchAndActivate(remoteConfig);
+      ctaButton.textContent = getString(remoteConfig, 'cta_text');
+    } catch (err) {
+      console.warn('Remote Config недоступний, лишається текст за замовчуванням:', err);
+    }
+
+    // ===== Мета експерименту: клік по кнопці =====
+    ctaButton.addEventListener('click', () => {
+      logEvent(analytics, 'contact_click', { cta_text: ctaButton.textContent });
+    });
   </script>
 
 </body>
