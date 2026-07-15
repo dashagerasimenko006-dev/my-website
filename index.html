@@ -442,7 +442,14 @@
 
     try {
       await fetchAndActivate(remoteConfig);
-      ctaButton.textContent = getString(remoteConfig, 'cta_text');
+      // Порожнє значення з Remote Config не застосовуємо: краще базовий
+      // текст, ніж кнопка без напису.
+      const remoteText = getString(remoteConfig, 'cta_text').trim();
+      if (remoteText) {
+        ctaButton.textContent = remoteText;
+      } else {
+        console.warn('cta_text порожній — лишаємо текст за замовчуванням');
+      }
     } catch (err) {
       console.warn('Remote Config недоступний, лишається текст за замовчуванням:', err);
     }
