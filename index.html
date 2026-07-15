@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Твоє ім'я] — Особистий сайт</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFGEM6TE8G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EFGEM6TE8G');
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --bg-soft: #171a21;
+      --card: #1c2029;
+      --text: #e7e9ee;
+      --text-dim: #a2a8b6;
+      --accent: #6ea8fe;
+      --accent-2: #a78bfa;
+      --border: #2a2f3a;
+      --radius: 16px;
+      --maxw: 900px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ===== Навігація ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 17, 21, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+    }
+    nav .logo { font-weight: 700; font-size: 1.05rem; }
+    nav .links { display: flex; gap: 22px; }
+    nav .links a { color: var(--text-dim); font-size: 0.95rem; }
+    nav .links a:hover { color: var(--text); text-decoration: none; }
+    @media (max-width: 600px) { nav .links { display: none; } }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 90px 0 70px;
+      text-align: center;
+      background:
+        radial-gradient(600px 300px at 50% -10%, rgba(110,168,254,0.15), transparent),
+        radial-gradient(500px 300px at 80% 0%, rgba(167,139,250,0.12), transparent);
+    }
+    .avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.6rem; font-weight: 700; color: #fff;
+      box-shadow: 0 10px 40px rgba(110,168,254,0.25);
+    }
+    .hero h1 { font-size: 2.6rem; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .hero .role { color: var(--accent); font-size: 1.2rem; font-weight: 500; margin-bottom: 18px; }
+    .hero .tagline { color: var(--text-dim); max-width: 560px; margin: 0 auto 28px; }
+    .hero .cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #0b1020; border-color: transparent; }
+    .btn-ghost { background: var(--card); color: var(--text); }
+
+    /* ===== Секції ===== */
+    section { padding: 60px 0; }
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::before {
+      content: ""; width: 26px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .about p { color: var(--text-dim); font-size: 1.05rem; }
+
+    /* Навички */
+    .skill-group { margin-bottom: 24px; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-group h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* Таймлайн (досвід / освіта) */
+    .timeline { position: relative; padding-left: 26px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px;
+      width: 2px; background: var(--border);
+    }
+    .item { position: relative; margin-bottom: 30px; }
+    .item::before {
+      content: ""; position: absolute; left: -26px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 4px rgba(110,168,254,0.15);
+    }
+    .item .when { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+    .item h3 { font-size: 1.1rem; margin: 4px 0 2px; }
+    .item .where { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 8px; }
+    .item p { color: var(--text-dim); font-size: 0.97rem; }
+
+    /* Картки рівнів (досвід / компетенції) */
+    .level-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .level-card:last-child { margin-bottom: 0; }
+    .level-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+    .level-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 4px 11px;
+      border-radius: 999px;
+      color: #0b1020;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      white-space: nowrap;
+    }
+    .level-card h3 { font-size: 1.2rem; }
+    .level-card .lead { color: var(--text-dim); font-size: 0.97rem; margin: 4px 0 16px; }
+    .level-list { list-style: none; display: grid; gap: 12px; }
+    .level-list li {
+      position: relative;
+      padding-left: 26px;
+      color: var(--text-dim);
+      font-size: 0.97rem;
+    }
+    .level-list li::before {
+      content: "";
+      position: absolute; left: 0; top: 9px;
+      width: 8px; height: 8px; border-radius: 2px;
+      background: var(--accent);
+    }
+    .level-list li b { color: var(--text); font-weight: 600; }
+
+    /* Картки контактів */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color .15s ease, transform .15s ease;
+    }
+    .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .contact-card .label { color: var(--text-dim); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .contact-card .value { font-size: 1.05rem; font-weight: 600; margin-top: 4px; word-break: break-all; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    /* Підказка-заглушка */
+    .placeholder { opacity: 0.85; }
+    .hint {
+      background: rgba(167,139,250,0.08);
+      border: 1px dashed var(--accent-2);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 34px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">[Твоє ім'я]</div>
+        <div class="links">
+          <a href="#about">Про мене</a>
+          <a href="#skills">Навички</a>
+          <a href="#experience">Досвід</a>
+          <a href="#education">Освіта</a>
+          <a href="#contact">Контакти</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <div class="container">
+      <div class="avatar">Т</div>
+      <h1>[Твоє ім'я та прізвище]</h1>
+      <div class="role">Бізнес-аналітик</div>
+      <p class="tagline">Опрацьовую вимоги через діаграми — розкладаю задачу на складові й ловлю питання, які легко проґавити на словах, ще на етапі аналізу.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-primary">Зв'язатися</a>
+        <a href="#about" class="btn btn-ghost">Дізнатися більше</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="hint">
+      👋 Це шаблон. Текст у квадратних дужках <b>[…]</b> — заглушки. Дай мені свою інформацію,
+      і я підставлю реальні дані. Цей блок потім прибереться.
+    </div>
+
+    <!-- ===== ПРО МЕНЕ ===== -->
+    <section id="about" class="about">
+      <h2 class="section-title">Про мене</h2>
+      <p>Бізнес-аналітик, який опрацьовує вимоги через діаграми. Візуалізуючи вимогу —
+      у флоу-діаграмі чи іншому форматі під конкретну задачу — я розкладаю її на складові
+      й ловлю питання, які легко проґавити на словах: що на межі діапазону, що при відсутніх
+      даних, що при помилці сервера. Закриваю їх ще на етапі аналізу, тож більшість прогалин
+      і потенційних багів знаходиться до розробки, а не після релізу. Підхід не ловить геть
+      усе, але помітно скорочує переробки — і розробники отримують вимоги, готові до реалізації.</p>
+    </section>
+
+    <!-- ===== НАВИЧКИ ===== -->
+    <section id="skills">
+      <h2 class="section-title">Навички та інструменти</h2>
+
+      <div class="skill-group">
+        <h3>Аналітика</h3>
+        <div class="skills">
+          <span class="skill">Requirements engineering</span>
+          <span class="skill">Функціональні / НФ вимоги</span>
+          <span class="skill">BPMN</span>
+          <span class="skill">UML Use Case</span>
+          <span class="skill">User stories</span>
+          <span class="skill">API-контракти (REST)</span>
+          <span class="skill">C4 / System Context</span>
+          <span class="skill">UAT</span>
+          <span class="skill">Аналіз воронок / A/B</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Інструменти</h3>
+        <div class="skills">
+          <span class="skill">draw.io</span>
+          <span class="skill">Lucidchart</span>
+          <span class="skill">Jira</span>
+          <span class="skill">Confluence</span>
+          <span class="skill">Figma</span>
+          <span class="skill">Miro</span>
+          <span class="skill">Postman</span>
+          <span class="skill">SQL (базовий)</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Soft skills</h3>
+        <div class="skills">
+          <span class="skill">Комунікація зі стейкхолдерами</span>
+          <span class="skill">Робота з FE/BE командами</span>
+          <span class="skill">Декомпозиція</span>
+          <span class="skill">Увага до деталей</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Мови</h3>
+        <div class="skills">
+          <span class="skill">Українська — рідна</span>
+          <span class="skill">Англійська — B2 (технічна)</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== ДОСВІД ===== -->
+    <section id="experience">
+      <h2 class="section-title">Досвід та компетенції</h2>
+
+      <div class="level-card">
+        <div class="level-head">
+          <span class="level-badge">Базові</span>
+          <h3>Рутинна аналітика</h3>
+        </div>
+        <ul class="level-list">
+          <li><b>Збір і документування вимог</b> — фіксація потреб менеджерів категорій, маркетингу, логістики.</li>
+          <li><b>User stories та невеликі ТЗ</b> — фільтри каталогу, відображення ціни, правки в картці товару.</li>
+          <li><b>Регулярна та ad-hoc звітність</b> — конверсія, середній чек, результати акцій; інтерпретація даних.</li>
+          <li><b>Підтримка документації</b> — актуалізація реєстру вимог і опису функціоналу.</li>
+          <li><b>Декомпозиція задач</b> — участь у грумінгах, розбивка великих задач на реалізовні кроки.</li>
+        </ul>
+      </div>
+
+      <div class="level-card">
+        <div class="level-head">
+          <span class="level-badge">Середні</span>
+          <h3>Проєктування функціоналу</h3>
+        </div>
+        <p class="lead">Потрібне розуміння процесу end-to-end і координація кількох ролей у команді.</p>
+        <ul class="level-list">
+          <li><b>Бізнес-процеси As-Is / To-Be у BPMN</b> — оформлення замовлення, повернення товару: як працює зараз і як має працювати.</li>
+          <li><b>Повний набір вимог із метриками</b> — функціональні + нефункціональні з вимірюваними критеріями (час відгуку, доступність, контраст, тап-зони).</li>
+          <li><b>Use case з альтернативними та винятковими сценаріями</b> — happy path плюс усі гілки помилок.</li>
+          <li><b>Специфікація API-контрактів</b> — ендпоінти, HTTP-статуси, приклади JSON у зв'язці з розробкою.</li>
+          <li><b>Аналіз воронки й конверсій</b> — пошук точок відвалу, гіпотези, супровід A/B-тестів.</li>
+          <li><b>UAT і приймання</b> — перевірка відповідності реалізації вимогам до релізу.</li>
+        </ul>
+      </div>
+
+      <div class="level-card">
+        <div class="level-head">
+          <span class="level-badge">Масштабні</span>
+          <h3>Масштабні проєкти — відповідаю за свій блок у команді</h3>
+        </div>
+        <p class="lead">Багато стейкхолдерів, кілька систем і вплив на бізнес загалом. Тут я веду окремий процес у складі великого проєкту.</p>
+        <ul class="level-list">
+          <li><b>Проєктування нового процесу end-to-end</b> — напр. самовивіз із магазину (click &amp; collect) чи наскрізне повернення: опис у частині сайту/застосунку, збір вимог від суміжних підрозділів, супровід розробки.</li>
+          <li><b>Опис архітектури рівня System Context (C4)</b> — компоненти системи, потоки даних, зовнішні інтеграції (платіжні, доставка, авторизація, аналітика).</li>
+          <li><b>Омніканальність</b> — об'єднання онлайн і офлайн (єдиний залишок, замовлення онлайн + видача в магазині); відповідальність за окремий наскрізний процес.</li>
+          <li><b>Вимоги до інтеграцій</b> — обмін даними між сайтом, ERP, складською системою (WMS) та платіжними сервісами.</li>
+          <li><b>Супровід міграції даних</b> — мапінг структур і контроль якості при зміні систем.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- ===== ОСВІТА ===== -->
+    <section id="education">
+      <h2 class="section-title">Освіта</h2>
+      <div class="timeline">
+        <div class="item">
+          <div class="when">[2018 — 2022]</div>
+          <h3>[Спеціальність / ступінь]</h3>
+          <div class="where">[Назва навчального закладу]</div>
+          <p>[Додаткова інформація: спеціалізація, відзнаки тощо.]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== КОНТАКТИ ===== -->
+    <section id="contact">
+      <h2 class="section-title">Контакти</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="label">Email</div>
+          <div class="value">[твій@email.com]</div>
+        </div>
+        <div class="contact-card">
+          <div class="label">Телефон</div>
+          <div class="value">[+380 __ ___ __ __]</div>
+        </div>
+        <div class="contact-card">
+          <div class="label">Місто</div>
+          <div class="value">[Твоє місто]</div>
+        </div>
+        <div class="contact-card">
+          <div class="label">Соцмережі</div>
+          <div class="value">[LinkedIn / Telegram]</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> [Твоє ім'я]. Зроблено з любов'ю.
+    </div>
+  </footer>
+
+  <script>
+    // Автоматичний рік у футері
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
