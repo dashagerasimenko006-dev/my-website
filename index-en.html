@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dariia Herasymenko — Business Analyst</title>
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --bg-soft: #171a21;
+      --card: #1c2029;
+      --text: #e7e9ee;
+      --text-dim: #a2a8b6;
+      --accent: #6ea8fe;
+      --accent-2: #a78bfa;
+      --border: #2a2f3a;
+      --radius: 16px;
+      --maxw: 900px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ===== Navigation ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 17, 21, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+    }
+    nav .logo { font-weight: 700; font-size: 1.05rem; }
+    nav .links { display: flex; gap: 22px; align-items: center; }
+    nav .links a { color: var(--text-dim); font-size: 0.95rem; }
+    nav .links a:hover { color: var(--text); text-decoration: none; }
+    .lang-switch {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+      color: var(--text) !important;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .lang-switch:hover { border-color: var(--accent); }
+    @media (max-width: 600px) { nav .links a:not(.lang-switch) { display: none; } }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 90px 0 70px;
+      text-align: center;
+      background:
+        radial-gradient(600px 300px at 50% -10%, rgba(110,168,254,0.15), transparent),
+        radial-gradient(500px 300px at 80% 0%, rgba(167,139,250,0.12), transparent);
+    }
+    .avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.6rem; font-weight: 700; color: #fff;
+      box-shadow: 0 10px 40px rgba(110,168,254,0.25);
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+    }
+    .hero h1 { font-size: 2.6rem; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .hero .role { color: var(--accent); font-size: 1.2rem; font-weight: 500; margin-bottom: 18px; }
+    .hero .tagline { color: var(--text-dim); max-width: 560px; margin: 0 auto 28px; }
+    .hero .cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #0b1020; border-color: transparent; }
+    .btn-ghost { background: var(--card); color: var(--text); }
+
+    /* ===== Sections ===== */
+    section { padding: 60px 0; }
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::before {
+      content: ""; width: 26px; height: 3px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .about p { color: var(--text-dim); font-size: 1.05rem; }
+
+    /* Skills */
+    .skill-group { margin-bottom: 24px; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-group h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* Timeline (experience / education) */
+    .timeline { position: relative; padding-left: 26px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px;
+      width: 2px; background: var(--border);
+    }
+    .item { position: relative; margin-bottom: 30px; }
+    .item::before {
+      content: ""; position: absolute; left: -26px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 4px rgba(110,168,254,0.15);
+    }
+    .item .when { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+    .item h3 { font-size: 1.1rem; margin: 4px 0 2px; }
+    .item .where { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 8px; }
+    .item p { color: var(--text-dim); font-size: 0.97rem; }
+
+    /* Level cards (experience / competencies) */
+    .level-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .level-card:last-child { margin-bottom: 0; }
+    .level-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+    .level-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 4px 11px;
+      border-radius: 999px;
+      color: #0b1020;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      white-space: nowrap;
+    }
+    .level-card h3 { font-size: 1.2rem; }
+    .level-card .lead { color: var(--text-dim); font-size: 0.97rem; margin: 4px 0 16px; }
+    .level-list { list-style: none; display: grid; gap: 12px; }
+    .level-list li {
+      position: relative;
+      padding-left: 26px;
+      color: var(--text-dim);
+      font-size: 0.97rem;
+    }
+    .level-list li::before {
+      content: "";
+      position: absolute; left: 0; top: 9px;
+      width: 8px; height: 8px; border-radius: 2px;
+      background: var(--accent);
+    }
+    .level-list li b { color: var(--text); font-weight: 600; }
+
+    /* Complexity level badges */
+    .level-badge.basic { background: linear-gradient(135deg, #34d399, #10b981); color: #04241a; }
+    .level-badge.mid   { background: linear-gradient(135deg, #a5b4fc, #6366f1); color: #fff; }
+    .level-badge.large { background: linear-gradient(135deg, #fca5a5, #ef4444); color: #fff; }
+
+    /* Cases */
+    .section-lead {
+      color: var(--text-dim);
+      max-width: 70ch;
+      margin: -14px 0 30px;
+    }
+    .case-sub {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 18px 0 14px;
+    }
+    .case-result {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+    .case-result b { color: var(--text); font-weight: 600; }
+    .case-lead { color: var(--text-dim); font-size: 0.97rem; margin: 4px 0 16px; }
+    .case-period { color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
+    .flow {
+      color: var(--text-dim);
+      word-spacing: 0.05em;
+    }
+
+    /* Contact cards */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color .15s ease, transform .15s ease;
+    }
+    .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .contact-card .label { color: var(--text-dim); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .contact-card .value { font-size: 1.05rem; font-weight: 600; margin-top: 4px; word-break: break-all; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Dariia Herasymenko</div>
+        <div class="links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#tools">Tools</a>
+          <a href="#contact">Contact</a>
+          <a href="index.html" class="lang-switch" title="Українська версія">UA</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <div class="container">
+      <div class="avatar"><img src="avatar.jpg" alt="Dariia Herasymenko" /></div>
+      <h1>Dariia Herasymenko</h1>
+      <div class="role">Business Analyst</div>
+      <p class="tagline">I work through requirements with diagrams — breaking a task into its parts and catching the questions that are easy to miss in conversation, right at the analysis stage.</p>
+      <div class="cta">
+        <a href="https://t.me/dashawe00" target="_blank" rel="noopener" class="btn btn-primary">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="about">
+      <h2 class="section-title">About me</h2>
+      <p>I'm Dariia, and I'm passionate about IT. I love the business analyst profession because I enjoy
+      communicating with people and analysing complex systems — understanding how they work. I'm curious
+      about the logic of a business: how it's built, how it sells, and what needs its users have.</p>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience">
+      <h2 class="section-title">Work experience</h2>
+      <div class="level-card">
+        <div class="level-head">
+          <h3>Business Analyst</h3>
+          <span class="level-badge mid">Kivorix</span>
+        </div>
+        <p class="lead">Digital Agency — Website Development</p>
+        <p class="case-period">April 2024 — June 2026</p>
+        <p class="case-lead">Working at a digital agency specialising in website development, I was responsible
+        for gathering and analysing business requirements, communicating with clients, and preparing functional
+        specifications and technical assignments for the development team.</p>
+        <p class="case-lead">I collaborated closely with UX/UI designers, architects and developers to align
+        business logic, functionality and the technical implementation of solutions. To model business processes
+        I used BPMN and Flow Diagrams, developed Use Cases and Acceptance Criteria, and ensured requirements were
+        agreed with all stakeholders.</p>
+
+        <div class="case-sub">Key projects</div>
+        <p class="case-lead"><b>E-commerce platform for a chain of building-materials stores.</b> I analysed
+        requirements and produced documentation for the product catalog, personal account, wishlist and product
+        comparison. I described business processes, Use Cases, functional requirements and Acceptance Criteria.
+        <b>Result —</b> automated catalog management and an improved user experience.</p>
+        <p class="case-lead"><b>Online product-return system</b> (an online store for garden and gardening
+        products). I gathered business requirements, modelled the return processes, described functional
+        requirements, business rules, Use Cases and acceptance criteria, and coordinated the alignment of
+        requirements with the client, the designer and the development team. <b>Result —</b> the remote
+        return-request process was automated.</p>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="level-card">
+        <div class="level-head">
+          <h3>Launching a website for a building-materials store</h3>
+        </div>
+        <p class="case-lead">An e-commerce platform for offline building-materials stores.</p>
+
+        <div class="case-sub">Product catalog</div>
+        <ul class="level-list">
+          <li>Gathered and analysed business requirements for moving the offline assortment into the online store.</li>
+          <li>Described the structure of a multi-level product catalog, categorisation rules and attributes for different groups of building products.</li>
+          <li>Defined requirements for search, filtering, display of product specifications, and synchronisation of the catalog, prices and stock levels with the accounting system.</li>
+          <li>Developed Use Cases, functional requirements and Acceptance Criteria for the catalog functionality.</li>
+        </ul>
+        <p class="case-result"><b>Result:</b> a content manager gained the ability to manage the catalog
+        independently, without involving the development team.</p>
+
+        <div class="case-sub">Personal account</div>
+        <ul class="level-list">
+          <li>Gathered and analysed requirements for the user's personal-account functionality.</li>
+          <li>Described the business processes of registration, authorisation, viewing order history, reordering and managing delivery addresses.</li>
+          <li>Modelled business processes with Flow Diagrams and developed Use Cases for the key scenarios.</li>
+          <li>Aligned the logic of order-status display between the website and the internal order-processing system.</li>
+        </ul>
+        <p class="case-result"><b>Result:</b> users could track their order status independently, without
+        contacting the support team.</p>
+
+        <div class="case-sub">Wishlist and product comparison</div>
+        <ul class="level-list">
+          <li>Analysed business requirements and described the logic of the wishlist and product comparison.</li>
+          <li>Developed functional requirements for saving selected products for both authorised and unauthorised users.</li>
+          <li>Described the logic of merging lists after authorisation and the rules for comparing products by technical specifications within a single category.</li>
+          <li>Prepared Use Cases, Acceptance Criteria and functional specifications for the implementation.</li>
+        </ul>
+        <p class="case-result"><b>Result:</b> fewer support requests asking "which one is better to choose".</p>
+      </div>
+
+      <div class="level-card">
+        <div class="level-head">
+          <h3>Online product-return system</h3>
+        </div>
+        <p class="case-lead">An online store for garden and gardening products.</p>
+
+        <div class="case-sub">Main tasks</div>
+        <ul class="level-list">
+          <li>Gathered and analysed business requirements for the product-return process.</li>
+          <li>Modelled the product-return process with a Flow Diagram.</li>
+          <li>Described return scenarios via a store branch or a delivery service (Nova Poshta).</li>
+          <li>Developed functional requirements for the return-request form (order data, return reason, return method, contact details, refund details).</li>
+          <li>Developed Use Cases, functional specifications and acceptance criteria for the implementation.</li>
+          <li>Defined business rules, form-validation rules and the request-processing logic.</li>
+          <li>Described the request-handling flow: from creation by the customer to verification, approval and completion of the return by a company employee.</li>
+          <li>Aligned requirements with the client, the designer and the development team.</li>
+        </ul>
+        <p class="case-result"><b>Result:</b> the product-return process was automated through the website,
+        allowing customers to submit a return request remotely and choose the shipping method (via a store or
+        Nova Poshta).</p>
+      </div>
+    </section>
+
+    <!-- ===== TOOLS ===== -->
+    <section id="tools">
+      <h2 class="section-title">Tools</h2>
+
+      <div class="skill-group">
+        <h3>Documentation</h3>
+        <div class="skills">
+          <span class="skill">Confluence</span>
+          <span class="skill">Google Docs</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Modelling</h3>
+        <div class="skills">
+          <span class="skill">draw.io</span>
+          <span class="skill">Miro</span>
+          <span class="skill">BPMN 2.0</span>
+          <span class="skill">Flow Diagram</span>
+          <span class="skill">UML (Use Case)</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Task management</h3>
+        <div class="skills">
+          <span class="skill">Jira</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Design and prototyping</h3>
+        <div class="skills">
+          <span class="skill">Figma</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>API and integrations</h3>
+        <div class="skills">
+          <span class="skill">Postman</span>
+          <span class="skill">Swagger</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:dasha.gerasimenko006@gmail.com">dasha.gerasimenko006@gmail.com</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="label">Phone</div>
+          <div class="value"><a href="tel:+380681660307">+380 68 166 03 07</a></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Dariia Herasymenko
+    </div>
+  </footer>
+
+  <script>
+    // Automatic year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNIq9qc4x85AZkpLbo6XxiKFopsApJ_Sg",
+      authDomain: "daria-portfolio.firebaseapp.com",
+      projectId: "daria-portfolio",
+      storageBucket: "daria-portfolio.firebasestorage.app",
+      messagingSenderId: "434595551434",
+      appId: "1:434595551434:web:351c06e0677c0e83d0fc33",
+      measurementId: "G-3WZW4G41WG"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Contact-button click tracking (same metric as the Ukrainian page).
+    // Note: the cta_text A/B experiment serves Ukrainian text, so it is not
+    // applied here — the English page keeps its static English label.
+    const ctaButton = document.querySelector('.btn-primary');
+    ctaButton.addEventListener('click', () => {
+      logEvent(analytics, 'contact_click', { cta_text: ctaButton.textContent, lang: 'en' });
+    });
+  </script>
+
+</body>
+</html>
