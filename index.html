@@ -73,6 +73,12 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 2.6rem; font-weight: 700; color: #fff;
       box-shadow: 0 10px 40px rgba(110,168,254,0.25);
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .hero h1 { font-size: 2.6rem; letter-spacing: -0.02em; margin-bottom: 10px; }
     .hero .role { color: var(--accent); font-size: 1.2rem; font-weight: 500; margin-bottom: 18px; }
@@ -263,7 +269,7 @@
   <!-- ===== HERO ===== -->
   <div class="hero">
     <div class="container">
-      <div class="avatar">Д</div>
+      <div class="avatar"><img src="avatar.jpg" alt="Дарія Герасименко" /></div>
       <h1>Дарія Герасименко</h1>
       <div class="role">Бізнес-аналітик</div>
       <p class="tagline">Опрацьовую вимоги через діаграми — розкладаю задачу на складові й ловлю питання, які легко проґавити на словах, ще на етапі аналізу.</p>
