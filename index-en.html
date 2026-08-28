@@ -192,6 +192,20 @@
       background: var(--accent);
     }
     .level-list li b { color: var(--text); font-weight: 600; }
+    .level-list .sublist {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .level-list .sublist li {
+      padding-left: 22px;
+      font-size: 0.93rem;
+    }
+    .level-list .sublist li::before {
+      width: 6px; height: 6px; top: 8px;
+      background: var(--accent-2);
+    }
 
     /* Complexity level badges */
     .level-badge.basic { background: linear-gradient(135deg, #34d399, #10b981); color: #04241a; }
@@ -256,7 +270,9 @@
         <div class="links">
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
+          <a href="#cases">Cases</a>
+          <a href="#artifacts">Artifacts</a>
+          <a href="#skills">Skills</a>
           <a href="#tools">Tools</a>
           <a href="#contact">Contact</a>
           <a href="index.html" class="lang-switch" title="Українська версія">UA</a>
@@ -294,90 +310,133 @@
       <div class="level-card">
         <div class="level-head">
           <h3>Business Analyst</h3>
-          <span class="level-badge mid">Kivorix</span>
         </div>
-        <p class="lead">Digital Agency — Website Development</p>
+        <p class="lead">Company «Kivorix» · Digital Agency</p>
         <p class="case-period">April 2024 — June 2026</p>
-        <p class="case-lead">Working at a digital agency specialising in website development, I was responsible
-        for gathering and analysing business requirements, communicating with clients, and preparing functional
-        specifications and technical assignments for the development team.</p>
-        <p class="case-lead">I collaborated closely with UX/UI designers, architects and developers to align
-        business logic, functionality and the technical implementation of solutions. To model business processes
-        I used BPMN and Flow Diagrams, developed Use Cases and Acceptance Criteria, and ensured requirements were
-        agreed with all stakeholders.</p>
 
-        <div class="case-sub">Key projects</div>
-        <p class="case-lead"><b>E-commerce platform for a chain of building-materials stores.</b> I analysed
-        requirements and produced documentation for the product catalog, personal account, wishlist and product
-        comparison. I described business processes, Use Cases, functional requirements and Acceptance Criteria.
-        <b>Result —</b> automated catalog management and an improved user experience.</p>
-        <p class="case-lead"><b>Online product-return system</b> (an online store for garden and gardening
-        products). I gathered business requirements, modelled the return processes, described functional
-        requirements, business rules, Use Cases and acceptance criteria, and coordinated the alignment of
-        requirements with the client, the designer and the development team. <b>Result —</b> the remote
-        return-request process was automated.</p>
+        <ul class="level-list" style="margin-top: 20px;">
+          <li>Requirements work:
+            <ul class="sublist">
+              <li>Requirements gathering</li>
+              <li>Requirements analysis</li>
+              <li>Requirements management</li>
+              <li>Requirements prioritization</li>
+            </ul>
+          </li>
+          <li>Collaboration with stakeholders and the development team</li>
+          <li>Creating specifications and other artifacts for the development team</li>
+          <li>Setting tasks</li>
+          <li>Building business processes</li>
+          <li>Backlog management</li>
+          <li>Collaboration with the design and marketing team</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
+    <!-- ===== CASES ===== -->
+    <section id="cases">
+      <h2 class="section-title">Cases</h2>
       <div class="level-card">
-        <div class="level-head">
-          <h3>Launching a website for a building-materials store</h3>
+        <p class="case-lead">Supporting an online store, developing new features:</p>
+        <ul class="level-list">
+          <li>Developing an admin panel for managing the catalog and categories</li>
+          <li>Gamification on the website</li>
+          <li>Functionality for promotional categories (creation, population, on-site management)</li>
+          <li>Developing and implementing a messaging module (communication with users)</li>
+          <li>Bonus management module</li>
+          <li>Personal account and checkout (implementing bonuses for users)</li>
+          <li>Admin-panel module for the call center's work</li>
+          <li>Admin-panel module for managing products</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== ARTIFACTS ===== -->
+    <section id="artifacts">
+      <h2 class="section-title">Artifacts</h2>
+
+      <div class="skill-group">
+        <h3>Diagrams</h3>
+        <div class="skills">
+          <span class="skill">BPMN</span>
+          <span class="skill">UML</span>
         </div>
-        <p class="case-lead">An e-commerce platform for offline building-materials stores.</p>
-
-        <div class="case-sub">Product catalog</div>
-        <ul class="level-list">
-          <li>Gathered and analysed business requirements for moving the offline assortment into the online store.</li>
-          <li>Described the structure of a multi-level product catalog, categorisation rules and attributes for different groups of building products.</li>
-          <li>Defined requirements for search, filtering, display of product specifications, and synchronisation of the catalog, prices and stock levels with the accounting system.</li>
-          <li>Developed Use Cases, functional requirements and Acceptance Criteria for the catalog functionality.</li>
-        </ul>
-        <p class="case-result"><b>Result:</b> a content manager gained the ability to manage the catalog
-        independently, without involving the development team.</p>
-
-        <div class="case-sub">Personal account</div>
-        <ul class="level-list">
-          <li>Gathered and analysed requirements for the user's personal-account functionality.</li>
-          <li>Described the business processes of registration, authorisation, viewing order history, reordering and managing delivery addresses.</li>
-          <li>Modelled business processes with Flow Diagrams and developed Use Cases for the key scenarios.</li>
-          <li>Aligned the logic of order-status display between the website and the internal order-processing system.</li>
-        </ul>
-        <p class="case-result"><b>Result:</b> users could track their order status independently, without
-        contacting the support team.</p>
-
-        <div class="case-sub">Wishlist and product comparison</div>
-        <ul class="level-list">
-          <li>Analysed business requirements and described the logic of the wishlist and product comparison.</li>
-          <li>Developed functional requirements for saving selected products for both authorised and unauthorised users.</li>
-          <li>Described the logic of merging lists after authorisation and the rules for comparing products by technical specifications within a single category.</li>
-          <li>Prepared Use Cases, Acceptance Criteria and functional specifications for the implementation.</li>
-        </ul>
-        <p class="case-result"><b>Result:</b> fewer support requests asking "which one is better to choose".</p>
       </div>
 
-      <div class="level-card">
-        <div class="level-head">
-          <h3>Online product-return system</h3>
+      <div class="skill-group">
+        <h3>Specifications</h3>
+        <div class="skills">
+          <span class="skill">SRS</span>
+          <span class="skill">BRD</span>
+          <span class="skill">PRD</span>
+          <span class="skill">Use-cases</span>
+          <span class="skill">US + AC</span>
+          <span class="skill">Backlog</span>
+          <span class="skill">Wireframes/Mockups</span>
+          <span class="skill">User Flows</span>
+          <span class="skill">Requirements Traceability Matrix (RTM)</span>
+          <span class="skill">Integration Specification (API Contract)</span>
+          <span class="skill">User Story Map</span>
         </div>
-        <p class="case-lead">An online store for garden and gardening products.</p>
+      </div>
+    </section>
 
-        <div class="case-sub">Main tasks</div>
-        <ul class="level-list">
-          <li>Gathered and analysed business requirements for the product-return process.</li>
-          <li>Modelled the product-return process with a Flow Diagram.</li>
-          <li>Described return scenarios via a store branch or a delivery service (Nova Poshta).</li>
-          <li>Developed functional requirements for the return-request form (order data, return reason, return method, contact details, refund details).</li>
-          <li>Developed Use Cases, functional specifications and acceptance criteria for the implementation.</li>
-          <li>Defined business rules, form-validation rules and the request-processing logic.</li>
-          <li>Described the request-handling flow: from creation by the customer to verification, approval and completion of the return by a company employee.</li>
-          <li>Aligned requirements with the client, the designer and the development team.</li>
-        </ul>
-        <p class="case-result"><b>Result:</b> the product-return process was automated through the website,
-        allowing customers to submit a return request remotely and choose the shipping method (via a store or
-        Nova Poshta).</p>
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skill-group">
+        <h3>Technical skills</h3>
+        <div class="skills">
+          <span class="skill">Database work (SQL)</span>
+          <span class="skill">Networking basics</span>
+          <span class="skill">QA (testing)</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Requirements management</h3>
+        <div class="skills">
+          <span class="skill">Requirements gathering</span>
+          <span class="skill">Documenting requirements</span>
+          <span class="skill">Requirements diagrams and visualization</span>
+          <span class="skill">Requirements prioritization</span>
+          <span class="skill">Risk management</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Stakeholder management</h3>
+        <div class="skills">
+          <span class="skill">RASCI matrix</span>
+          <span class="skill">Communication plan</span>
+          <span class="skill">Change management</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Soft skills</h3>
+        <div class="skills">
+          <span class="skill">Running demos</span>
+          <span class="skill">Brainstorming</span>
+          <span class="skill">Conflict resolution</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Business process work</h3>
+        <div class="skills">
+          <span class="skill">Process analysis</span>
+          <span class="skill">Process modelling</span>
+          <span class="skill">Process design</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Software development methodologies</h3>
+        <div class="skills">
+          <span class="skill">Agile</span>
+        </div>
       </div>
     </section>
 
